@@ -6,11 +6,19 @@ Uses node.js runtime v0.10.33.
 
 ## Usage
 
-Includes a very basic express based application that outputs hello world. Can be run with:
+First you need to have the filebox volume container created:
 
 ```
-sudo docker run --rm -p 3000:3000 -ti sirile/nodeboxtest
+sudo docker run --name filebox sirile/filebox
 ```
+
+Then you can run the very basic express based application that outputs hello world:
+
+```
+sudo docker run --rm --name=nodeboxtest -p 3000:3000 --volumes-from filebox -ti sirile/nodeboxtest
+```
+
+After that it should be available at the address http://<host>:3000.
 
 ## Author
 
